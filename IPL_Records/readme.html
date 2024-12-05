@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Boot: IPL Records Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+        }
+        h1, h2, h3 {
+            color: #2C3E50;
+        }
+        .code-block {
+            background: #F4F4F4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Spring Boot: IPL Records Project</h1>
+    <p><strong>Project Type:</strong> BackEnd</p>
+    <p><strong>Status:</strong> Attempted</p>
+
+    <h2>Requirements</h2>
+    <p>Implement REST APIs to list the names of the teams who won in the IPL cricket match and the teams who played in 2013.</p>
+
+    <h3>Entity Details</h3>
+    <p>The <strong>Teams</strong> entity should have the following attributes:</p>
+    <ul>
+        <li><strong>teamId:</strong> The unique ID of the team (Integer).</li>
+        <li><strong>teamName:</strong> Name of the team (String).</li>
+        <li><strong>runs:</strong> Runs made by the team (Integer).</li>
+        <li><strong>targetRuns:</strong> Target runs they have to make (Integer).</li>
+        <li><strong>year:</strong> Year in which the team played (Integer).</li>
+    </ul>
+
+    <p>Here is an example of a Team JSON object:</p>
+    <div class="code-block">
+        [
+            {
+                "teamId": 1,
+                "teamName": "RR",
+                "runs": 185,
+                "targetRuns": 170,
+                "year": 2011
+            },
+            {
+                "teamId": 2,
+                "teamName": "KKR",
+                "runs": 125,
+                "targetRuns": 190,
+                "year": 2013
+            },
+            {
+                "teamId": 3,
+                "teamName": "RCB",
+                "runs": 195,
+                "targetRuns": 180,
+                "year": 2013
+            }
+        ]
+    </div>
+
+    <h2>API Routes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>API Route</th>
+                <th>API Type</th>
+                <th>Success Response Code</th>
+                <th>Validation Error Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>/teams/winning-teams</td>
+                <td>GET</td>
+                <td>200</td>
+                <td>404</td>
+            </tr>
+            <tr>
+                <td>/teams/team-2013</td>
+                <td>GET</td>
+                <td>200</td>
+                <td>404</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Tasks</h2>
+    <h3>Task 1: Service Layer Implementation in TeamsService</h3>
+    <p>Implement the business logic in the service layer using <strong>TeamsRepository</strong>.</p>
+    <ul>
+        <li><strong>Method Details:</strong></li>
+        <ul>
+            <li><strong>getAllTeams():</strong> Implement the GET method, which should list all the teams' details.</li>
+        </ul>
+    </ul>
+
+    <h3>Task 2: REST API Endpoints in TeamsController</h3>
+    <p>
+        <strong>GET request to /teams/winning-teams:</strong> 
+        Filter out the teams that have a number of runs greater than or equal to their target runs.
+    </p>
+    <p><strong>Response Body:</strong> JSON object representing the details of the winning team.</p>
+    <p><strong>HTTP Status Code:</strong></p>
+    <ul>
+        <li>200 (OK) - If winning teams found.</li>
+        <li>404 (Not Found) - If no winning teams are found.</li>
+    </ul>
+
+    <p>
+        <strong>GET request to /teams/team-2013:</strong>
+        Filter out the teams that belong to the year 2013.
+    </p>
+    <p><strong>Response Body:</strong> JSON object representing the details of the team.</p>
+    <p><strong>HTTP Status Code:</strong></p>
+    <ul>
+        <li>200 (OK) - If the teams for the year 2013 found.</li>
+        <li>404 (Not Found) - If no teams are found for the year 2013.</li>
+    </ul>
+
+    <h3>Example Requests and Responses</h3>
+    <p><strong>GET request to /teams/winning-teams:</strong></p>
+    <p><strong>Response Code:</strong> 200</p>
+    <p><strong>Response Body:</strong></p>
+    <div class="code-block">
+        [
+            {
+                "teamId": 1,
+                "teamName": "Rajasthan Royals",
+                "runs": 185,
+                "targetRuns": 170,
+                "year": 2011
+            },
+            {
+                "teamId": 3,
+                "teamName": "RCB",
+                "runs": 195,
+                "targetRuns": 180,
+                "year": 2013
+            }
+        ]
+    </div>
+
+    <p><strong>GET request to /teams/team-2013:</strong></p>
+    <p><strong>Response Code:</strong> 200</p>
+    <p><strong>Response Body:</strong></p>
+    <div class="code-block">
+        [
+            {
+                "teamId": 2,
+                "teamName": "Kolkata Knight Riders",
+                "runs": 125,
+                "targetRuns": 190,
+                "year": 2013
+            },
+            {
+                "teamId": 3,
+                "teamName": "RCB",
+                "runs": 195,
+                "targetRuns": 180,
+                "year": 2013
+            }
+        ]
+    </div>
+</body>
+</html>

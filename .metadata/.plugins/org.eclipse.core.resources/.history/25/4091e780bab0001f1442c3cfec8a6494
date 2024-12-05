@@ -1,0 +1,11 @@
+spring.application.name=IPL_Records
+
+
+spring.datasource.url=jdbc:h2:mem:testdb
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.username=root
+spring.datasource.password=root
+spring.h2.console.enabled=true
+
+logging.level.org.hibernate=DEBUG
+logging.level.org.springframework=DEBUG

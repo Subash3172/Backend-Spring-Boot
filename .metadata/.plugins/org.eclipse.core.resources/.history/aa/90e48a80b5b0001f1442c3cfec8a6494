@@ -1,0 +1,23 @@
+package org.techm.codingchallenges.service;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Optional;
+ 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class TeamsService {
+ 
+    @Autowired
+    TeamsRepository teamsRepo;
+   
+    public List<Teams> getAllTeams(){
+         
+        // Code here..
+        return null;
+       
+    }
+ 
+}
