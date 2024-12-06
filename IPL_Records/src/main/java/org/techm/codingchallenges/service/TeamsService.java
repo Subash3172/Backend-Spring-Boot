@@ -18,15 +18,5 @@ public class TeamsService {
 		return teamsRepo.findAll();
 	}
 
-	public List<Teams> getWinningTeams() {
-		return teamsRepo.findAll().stream().filter(team -> team.getTargetRuns()<=team.getRuns()).collect(Collectors.toList());
-	}
-	public List<Teams> getTeams2013(){
-		return teamsRepo.findAll().stream().filter(team -> team.getYear()==2013).toList();
-	}
-
-	public void saveall(Teams team) {
-		teamsRepo.save(team);
-	}
 
 }

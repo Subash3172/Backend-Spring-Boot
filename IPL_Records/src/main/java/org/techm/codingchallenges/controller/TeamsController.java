@@ -21,11 +21,7 @@ public class TeamsController {
     @Autowired
     TeamsService teamsService;
    
-    @PostMapping("/teams")
-    public ResponseEntity<String> saveTeams(@RequestBody Teams team){
-    	teamsService.saveall(team);
-    	return new ResponseEntity<String>("Added",HttpStatus.OK);
-    }
+
     @GetMapping(path = "/teams/winning-teams")
     public ResponseEntity<List<Teams>> getAllWinningTeams(){
        List<Teams> winningTeams = teamsService.getAllTeams().stream().filter(team -> team.getTargetRuns()<=team.getRuns()).collect(Collectors.toList());;
